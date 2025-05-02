@@ -39,7 +39,7 @@ class EmpleadosC{
 				<td>'.$value['puesto'].'</td>
 				<td>'.$value['salario'].'</td>
 				<td><a href="index.php?ruta=editar&id='.$value['id'].'"><button>Editar</button></a></td>
-				<td><button>Borrar</button></td>
+				<td><a href="index.php?ruta=empleados&idB='.$value["id"].'"><button>Borrar</button></a></td>
 			    </tr>
                 ';
         }
@@ -90,6 +90,22 @@ public function ActualizarEmpleadoC(){
 			echo "error al actualizar";
 		}
 	}
+}
+
+//Eliminar empleados
+public function BorrarEmpleadoC(){
+    if(isset($_GET["idB"])){
+        $datosC = $_GET["idB"];
+        $tablaBD = "empleados";
+
+        $respuesta = EmpleadosM::BorrarEmpleadoM($datosC, $tablaBD);
+
+        if($respuesta == "Bien"){
+            header("location:index.php?ruta=empleados");
+        }else {
+            echo "error";
+        }
+    }
 }
 }
 

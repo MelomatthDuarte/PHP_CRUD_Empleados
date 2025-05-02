@@ -36,3 +36,8 @@ if (!isset($_SESSION["ingreso"])) {
 		</tbody>
 
 	</table>
+
+	<?php
+	$eliminar = new EmpleadosC();
+	$eliminar -> BorrarEmpleadoC();
+    ?>
